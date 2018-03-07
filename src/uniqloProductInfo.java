@@ -37,14 +37,14 @@ public class uniqloProductInfo {
 
     // Returns product price
     public String getProductPrice(Document doc) {
-        // creates an Element price with the contents of the first <span> of the parent element <li class="price">
-        Element price = doc.select("li.price > span").first();
-        // creates a string with the contents of the element
-        String productPrice = price.toString();
-        // removes everything but the price
-        productPrice = productPrice.substring(6, 13);
-        // returns the product price
-        return productPrice;
+            // creates an Element price with the contents of the first <span> of the parent element <li class="price">
+            Element price = doc.select("li.price > span").first();
+            // creates a string with the contents of the element
+            String productPrice = price.toString();
+            // removes everything but the price
+            productPrice = productPrice.substring(6, 13);
+            // returns the product price
+            return productPrice;
     }
 
     // Returns the product number

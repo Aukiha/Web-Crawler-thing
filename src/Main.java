@@ -5,6 +5,17 @@ import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.Elements;
 import java.io.IOException;
+import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 
 
@@ -12,16 +23,31 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+      // JFrame that will hold the main search app
+      JFrame mainFrame = new JFrame();
+      mainFrame.setSize(500, 500);
+      mainFrame.setTitle("Clothes Search Thing App Early Access");
+      mainFrame.setLayout(new BoxLayout(mainFrame.getContentPane(), 3));
+
+      final JPanel frame = new JPanel();
+      frame.setLayout(new FlowLayout());
+
+      final JTextField clothesInput = new JTextField(20);
+      final JTextField websiteInput = new JTextField(20);
+
+      frame.add(clothesInput);
+      frame.add(websiteInput);
+
         // Test values, replace with actual search values
         String website = "uniqlo";
         String description = "flannel checked long sleeve shirt";
 
         // Searches for the link of the product using the website and the product description
         String link = (productSearch(website, description));
-        switch(website) {
+    switch(website) {
 
-            // if the website is UNIQLO
-            case "uniqlo":
+        // if the website is UNIQLO
+        case "uniqlo":
 
                 // initializes a new uniqloProductInfo object named uni for the webpage link
                 uniqloProductInfo uni = new uniqloProductInfo(link);
@@ -42,8 +68,8 @@ public class Main {
                 System.out.println(uni.getProductNumber(docUni));
                 break;
 
-            // if the website is Old Navy
-            case "old navy":
+        // if the website is Old Navy
+        case "old navy":
 
                 // initializes a new oldnavyProductInfo objected called navy for the webpage link
                 oldnavyProductInfo navy = new oldnavyProductInfo(link);
@@ -58,8 +84,8 @@ public class Main {
                 System.out.println(navy.getProductNumber(docNavy));
                 break;
 
-            // if the website is The Bay
-            case "the bay":
+        // if the website is The Bay
+        case "the bay":
 
                 // initializes a new thebayProductInfo object called bay
                 thebayProductInfo bay = new thebayProductInfo(link);
@@ -72,7 +98,7 @@ public class Main {
 
                 // gets the product number
                 System.out.println(bay.getProductNumber(docBay));
-        }
+    }
 
     }
 
